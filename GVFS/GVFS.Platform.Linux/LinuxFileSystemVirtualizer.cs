@@ -251,16 +251,6 @@ namespace GVFS.Platform.Linux
             return true;
         }
 
-        private static string ConvertDotPath(string path)
-        {
-            if (path == ".")
-            {
-                path = string.Empty;
-            }
-
-            return path;
-        }
-
         private static byte[] ToVersionIdByteArray(byte[] version)
         {
             byte[] bytes = new byte[VirtualizationInstance.PlaceholderIdLength];
@@ -641,8 +631,6 @@ namespace GVFS.Platform.Linux
             int triggeringProcessId,
             string triggeringProcessName)
         {
-            relativePath = ConvertDotPath(relativePath);
-
             try
             {
                 Result result;
