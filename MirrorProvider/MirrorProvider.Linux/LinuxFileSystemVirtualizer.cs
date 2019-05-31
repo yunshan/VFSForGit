@@ -41,7 +41,7 @@ namespace MirrorProvider.Linux
                 storageRoot,
                 enlistment.SrcRoot,
                 poolThreadCount: (uint)Environment.ProcessorCount * 2,
-                initializeStorageRoot: IsUninitializedMount(storageRoot));
+                initializeStorageRoot: IsDirectoryEmpty(storageRoot));
 
             if (result == Result.Success)
             {
@@ -59,7 +59,7 @@ namespace MirrorProvider.Linux
             this.virtualizationInstance.StopVirtualizationInstance();
         }
 
-        private bool IsUninitializedMount(string dir)
+        private bool IsDirectoryEmpty(string dir)
         {
             return !this.virtualizationInstance.EnumerateFileSystemEntries(dir).Any();
         }
